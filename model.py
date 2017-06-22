@@ -33,18 +33,18 @@ class Model(SoftmaxClassifier):
         # input is 32x32x3
 
         # conv layers
-        net = tf.layers.conv2d(net, 16, [5, 5], activation=tf.nn.elu, name="elu_1", padding="same")
-        # Parameters: 5*5*3*16 =
-
-        net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, strides=2,name="elu_2", padding="same")
+        net = tf.layers.conv2d(net, 16, [3, 3], activation=tf.nn.elu, name="elu_1", padding="same")
+        net = tf.layers.conv2d(net, 16, [3, 3], activation=tf.nn.elu, strides=2,name="elu_2", padding="same")
         #net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_1", padding="same")
         # Parameters: 3*3*16*32 =
 
-        net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, strides=2, name="elu_3", padding="same")
+        net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, name="elu_3", padding="same")
+        net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, strides=2, name="elu_3_a", padding="same")
         #net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_2", padding="same")
         # Parameters: 3*3*32*64 =
 
         net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, name="elu_4", padding="same")
+        net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, strides=2, name="elu_4_a", padding="same")
         # Parameters: 3*3*64*128 =
 
         # flatten
@@ -63,8 +63,8 @@ class Model(SoftmaxClassifier):
         return tf.layers.dense(net, self.n_classes)
         # Parameters: 512*43 =
 
-        # TOTAL PARAMS: 4.8M with last conv of 64 filters (4,801,712)
-        # = 5*5*3*16 + 3*3*16*32 + 3*3*32*64 + 3*3*64*64 + 8*8*64*1024 + 1024*512 + 512*43
+        # TOTAL PARAMS: 4.8M with last conv of 64 filters (4,812,464)
+        # = 3*3*3*16 + 3*3*16*16 + 3*3*16*32 + 3*3*32*32 + 3*3*32*64 + 3*3*64*64 +8*8*64*1024 + 1024*512 + 512*43
 
     def get_summaries(self, inputs):
         return [
