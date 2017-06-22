@@ -30,18 +30,22 @@ class Model(SoftmaxClassifier):
 
         # cast
         net = tf.cast(self.inputs.features, tf.float32, "cast")
+        # input is 32x32x3
 
         # conv layers
         net = tf.layers.conv2d(net, 16, [5, 5], activation=tf.nn.elu, name="elu_1", padding="same")
+        # Parameters: 5*5*3*16 =
 
         net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, strides=2,name="elu_2", padding="same")
         #net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_1", padding="same")
-
+        # Parameters: 3*3*16*32 =
 
         net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, strides=2, name="elu_3", padding="same")
         #net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_2", padding="same")
+        # Parameters: 3*3*32*64 =
 
         net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, name="elu_4", padding="same")
+        # Parameters: 3*3*64*128 =
 
         # flatten
         net = tf.contrib.layers.flatten(net)
@@ -49,11 +53,18 @@ class Model(SoftmaxClassifier):
         # dense layers
         net = tf.layers.dense(net, 1024, activation=tf.nn.elu)
         net = tf.nn.dropout(net, self.inputs.keep_prob)
+        # Parameters: 8*8*64*1024 =
 
         net = tf.layers.dense(net, 512, activation=tf.nn.elu)
+        #net = tf.nn.dropout(net, self.inputs.keep_prob)
+        # Parameters: 1024*512 =
 
         # output layer
         return tf.layers.dense(net, self.n_classes)
+        # Parameters: 512*43 =
+
+        # TOTAL PARAMS: 4.8M with last conv of 64 filters
+        # TOTAL PARAMS: 9M with last conv of 128 filters
 
     def get_summaries(self, inputs):
         return [

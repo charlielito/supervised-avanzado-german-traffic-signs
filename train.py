@@ -17,7 +17,7 @@ random.seed(seed)
 dataset = data("german-traffic-signs").get()
 
 # obtener todas las imagenes (lento)
-data_generator = dataset.training_set.random_batch_arrays_generator(32)
+data_generator = dataset.training_set.random_batch_arrays_generator(128)
 data_generator = cz.map(Dict(features = P[0], labels = P[1]), data_generator)
 
 graph = tf.Graph()
@@ -58,7 +58,7 @@ model.initialize()
 print("training")
 model.fit(
     data_generator = data_generator,
-    epochs = 4000,
+    epochs = 8000,
     log_summaries = True,
     log_interval = 10,
     print_test_info = True,
