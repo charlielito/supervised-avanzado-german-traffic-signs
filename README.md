@@ -41,35 +41,31 @@ dataget get --dont-process german-traffic-signs
 
 ### Metodo
 ##### Modelo
-Se utilizo una Red Neuronal Convolucional con la siguiente arquitectura:
+Se utilizó una Red Neuronal Convolucional con la siguiente arquitectura:
 
 * Inputs: 3 filtros (RGB)
 * Capa Convolucional: 16 filtros, kernel 5x5, padding 'same', funcion de activacion ELU
-* Capa Convolucional: 32 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
-* Max Pool: kernel 2x2, stride 2
-* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
-* Max Pool: kernel 2x2, stride 2
+* Capa Convolucional: 32 filtros, kernel 3x3, padding 'same', stride 2, funcion de activacion ELU
+* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', stride 2, funcion de activacion ELU
 * Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
 * Flatten: se aplana a vector
-* Capa Densa: 2048 neuronas, activacion ELU
+* Capa Densa: 1024 neuronas, activacion ELU, dropout = 0.5
 * Capa Densa: 512 neuronas, activacion ELU
-* Capa Densa Output: 32 neuronal, activacion softmax
+* Capa Densa Output: 43 neuronal, activacion softmax
 
 ###### Parametros
-Este modelo utiliza `9,523,083` parametros.
+Este modelo utiliza `4,801,712` parametros.
 
 ##### Entrenamiento
-Se utilizo un Stocastic Gradient Descent con los siguente parametros
+Se utilizó un Stocastic Gradient Descent con los siguentes parámetros
 
 * Optimizador: ADAM
 * Learning Rate: 0.001
-* Batch Size: 32
+* Batch Size: 128
 
 ##### Notas
-No se intento optimizar el modelo de ninguna manera, en especial:
+No se intentó optimizar el modelo de ninguna manera, en especial:
 
-* No se utilizo busqueda de hiperparametros
-* No se utilizo ningun metodo de regularizacion
 * No se preprocesaron los datos de ninguna manera excepto estandarizar su tamaño de las imagenes a `32x32`
 
 ### Procedimiento
@@ -77,13 +73,12 @@ El modelo se encuentra en el archivo `model.py`. Para entrenarlo ejecuta el coma
 ```
 python train.py
 ```
-Este script corre realiza lo siguiente
+Este script realiza lo siguiente
 
 * Utiliza `seed = 32` para controlar la aleatoreidad y que los resultados sean reproducibles
-* Entrena el modelo por `1000` iteraciones
+* Entrena el modelo por `8000` iteraciones
 * Graba el modelo en los archivos `basic-conv-net.tf.*`
 
-**Nota:** Los archivos `basic-conv-net.tf.*` del modelo ya vienen el el repositorio, por lo tanto no es del todo necesario ejecutar el script de entrenamiento.
 
 ### Resultados
 Ver el score del `test-set` ejecuta
@@ -91,7 +86,7 @@ Ver el score del `test-set` ejecuta
 python test.py
 ```
 
-Resultado: **0.920586407185**
+Resultado: **0.945368647575**
 
 
 ### Visualizacion

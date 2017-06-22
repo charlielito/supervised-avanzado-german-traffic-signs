@@ -63,8 +63,8 @@ class Model(SoftmaxClassifier):
         return tf.layers.dense(net, self.n_classes)
         # Parameters: 512*43 =
 
-        # TOTAL PARAMS: 4.8M with last conv of 64 filters
-        # TOTAL PARAMS: 9M with last conv of 128 filters
+        # TOTAL PARAMS: 4.8M with last conv of 64 filters (4,801,712)
+        # = 5*5*3*16 + 3*3*16*32 + 3*3*32*64 + 3*3*64*64 + 8*8*64*1024 + 1024*512 + 512*43
 
     def get_summaries(self, inputs):
         return [
