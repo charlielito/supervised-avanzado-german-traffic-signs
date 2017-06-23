@@ -19,7 +19,7 @@ donde `n_aciertos` es el numero de imagenes clasificadas de forma correcta y `n_
 ### Requerimientos
 Clona este repositorio y ejecuta el commando
 ```bash
-git checkout feature/red-mediana
+git checkout charlie
 ```
 Despues puedes instalar los requirementos fácilmente utilizando el commando
 
