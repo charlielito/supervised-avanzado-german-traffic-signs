@@ -49,7 +49,7 @@ Se utilizó una Red Neuronal Convolucional con la siguiente arquitectura:
 * Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', stride 2, funcion de activacion ELU
 * Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
 * Flatten: se aplana a vector
-* Capa Densa: 256 neuronas, activacion ELU, dropout = 0.5
+* Capa Densa: 256 neuronas, activacion ELU, dropout = 0.15
 * Capa Densa: 128 neuronas, activacion ELU
 * Capa Densa Output: 43 neuronal, activacion softmax
 
