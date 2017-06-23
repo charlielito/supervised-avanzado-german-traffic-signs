@@ -1,9 +1,11 @@
 import commands, yaml, sys
+from time import sleep
 
 def get_out_id(run_id):
     out = commands.getoutput("floyd info "+run_id)
     out = out.split("\n")
     for line in out:
+        print line
         if "Output ID" in line:
             out_id = line.split(" ")[-1]
 
@@ -36,5 +38,6 @@ if field != "test" and field != "train" and field != "data":
     print("Bad argument")
 else:
     run_id = run_floyd(field)
+    sleep(2)
     out_id = get_out_id(run_id)
     actualize_ids(field, run_id, out_id)
