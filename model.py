@@ -52,7 +52,7 @@ class Model(SoftmaxClassifier):
 
         # dense layers
         net = tf.layers.dense(net, 1024, activation=tf.nn.elu)
-        net = tf.nn.dropout(net, self.inputs.keep_prob)
+        net = tf.layers.dropout(net, rate=0.5, training=inputs.training)
         # Parameters: 8*8*64*1024 =
 
         net = tf.layers.dense(net, 512, activation=tf.nn.elu)
