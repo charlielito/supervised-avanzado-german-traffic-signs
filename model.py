@@ -29,19 +29,19 @@ class Model(SoftmaxClassifier):
     def get_logits(self, inputs):
 
         # cast
-        net = tf.cast(self.inputs.features, tf.float32, "cast")
+        net = tf.cast(self.inputs.features, tf.float32, "cast")/255.0
         # input is 32x32x3
 
         # conv layers
-        net = tf.layers.conv2d(net, 16, [5, 5], activation=tf.nn.elu, name="elu_1", padding="same")
+        net = tf.layers.conv2d(net, 64, [7, 7], activation=tf.nn.elu, name="elu_1", padding="same")
         # Parameters: 5*5*3*16 =
-        net = tf.layers.conv2d(net, 32, [5, 5], activation=tf.nn.elu, strides=2,name="elu_2", padding="same")
-        #net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_1", padding="same")
+        net = tf.layers.conv2d(net, 32, [5, 5], activation=tf.nn.elu, name="elu_2", padding="same")
+        net = tf.layers.max_pooling2d(net, pool_size=2, strides=1, name="max_pool_1", padding="same")
         # Parameters: 5*5*16*32 =
 
-        #net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, name="elu_3", padding="same")
-        net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, strides=2, name="elu_3_a", padding="same")
-        #net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_2", padding="same")
+        net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, name="elu_3", padding="same")
+        net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, name="elu_3_a", padding="same")
+        net = tf.layers.max_pooling2d(net, pool_size=2, strides=1, name="max_pool_2", padding="same")
         # Parameters: 3*3*32*64 =
 
         net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, name="elu_4", padding="same")
@@ -58,8 +58,7 @@ class Model(SoftmaxClassifier):
         # Parameters: 8*8*64*256 =
 
         net = tf.layers.dense(net, 128, activation=tf.nn.elu)
-        #net = tf.layers.dropout(net, rate = 0.2, training = inputs.training)
-        #net = tf.nn.dropout(net, self.inputs.keep_prob)
+        net = tf.layers.dropout(net, rate = 0.05, training = inputs.training)
         # Parameters: 256*128 =
 
         # output layer

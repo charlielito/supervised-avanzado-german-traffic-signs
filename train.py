@@ -7,6 +7,8 @@ import numpy as np
 import random
 from name import network_name, model_path
 from tfinterface.supervised import SupervisedInputs
+from sklearn import preprocessing
+
 
 # seed: resultados repetibles
 seed = 32
