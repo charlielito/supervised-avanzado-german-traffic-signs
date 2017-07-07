@@ -35,22 +35,23 @@ class Model(SoftmaxClassifier):
         # conv layers
         net = tf.layers.conv2d(net, 16, [5, 5], activation=tf.nn.elu, name="elu_1", padding="same")
         # Parameters: 5*5*3*16 =
-        net = tf.layers.conv2d(net, 32, [5, 5], activation=tf.nn.elu, strides=2,name="elu_2", padding="same")
+        net = tf.layers.conv2d(net, 32, [5, 5], activation=tf.nn.elu, name="elu_2", padding="same")
+        net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_1", padding="same")
         net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, name="elu_2b", padding="same")
-        #net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_1", padding="same")
         # Parameters: 5*5*16*32 =
 
         net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, name="elu_3", padding="same")
-        net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, strides=2, name="elu_3_a", padding="same")
-        #net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_2", padding="same")
+        net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, name="elu_3_a", padding="same")
+        net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_2", padding="same")
         # Parameters: 3*3*32*64 =
 
         net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, name="elu_4", padding="same")
+        net = tf.layers.dropout(net, rate=0.25, training=inputs.training)
         #net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, strides=2, name="elu_4_a", padding="same")
         # Parameters: 3*3*64*64 =
 
         # reduce
-        net = tf.layers.conv2d(net, self.n_classes, [1, 1], padding='same') #linear
+        net = tf.layers.conv2d(net, self.n_classes, [1, 1], activation=tf.nn.elu, padding='same') #linear
         shape = net.get_shape()[1]
         net = tf.layers.average_pooling2d(net, [shape, shape], strides=1)
 
