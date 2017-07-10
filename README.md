@@ -45,8 +45,10 @@ Se utilizó una Red Neuronal Convolucional con la siguiente arquitectura:
 
 * Inputs: 3 filtros (RGB)
 * Capa Convolucional: 16 filtros, kernel 5x5, padding 'same', funcion de activacion ELU
-* Capa Convolucional: 32 filtros, kernel 3x3, padding 'same', stride 2, funcion de activacion ELU
-* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', stride 2, funcion de activacion ELU
+* Capa Convolucional: 32 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
+* Max Pool: kernel 2x2, stride 2
+* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
+* Max Pool: kernel 2x2, stride 2
 * Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
 * Flatten: se aplana a vector
 * Capa Densa: 1024 neuronas, activacion ELU, dropout = 0.5
@@ -54,7 +56,7 @@ Se utilizó una Red Neuronal Convolucional con la siguiente arquitectura:
 * Capa Densa Output: 43 neuronal, activacion softmax
 
 ###### Parametros
-Este modelo utiliza `4,801,712` parametros.
+Este modelo utiliza `4,803,467` parametros.
 
 ##### Entrenamiento
 Se utilizó un Stocastic Gradient Descent con los siguentes parámetros
@@ -86,7 +88,7 @@ Ver el score del `test-set` ejecuta
 python test.py
 ```
 
-Resultado: **0.939509630203**
+Resultado: **0.962708353996**
 
 
 ### Visualizacion
