@@ -19,7 +19,7 @@ donde `n_aciertos` es el numero de imagenes clasificadas de forma correcta y `n_
 ### Requerimientos
 Clona este repositorio y ejecuta el commando
 ```bash
-git checkout charlie
+git checkout red-mediana-maxpool
 ```
 Despues puedes instalar los requirementos fácilmente utilizando el commando
 
