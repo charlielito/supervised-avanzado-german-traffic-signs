@@ -63,7 +63,7 @@ Se utilizó un Stocastic Gradient Descent con los siguentes parámetros
 
 * Optimizador: ADAM
 * Learning Rate: 0.001
-* Batch Size: 64
+* Batch Size: 128
 
 ##### Notas
 No se intentó optimizar el modelo de ninguna manera, en especial:
@@ -78,7 +78,7 @@ python train.py
 Este script realiza lo siguiente
 
 * Utiliza `seed = 32` para controlar la aleatoreidad y que los resultados sean reproducibles
-* Entrena el modelo por `6000` iteraciones
+* Entrena el modelo por `8000` iteraciones
 * Graba el modelo en los archivos `basic-conv-net.tf.*`
 
 
@@ -88,7 +88,7 @@ Ver el score del `test-set` ejecuta
 python test.py
 ```
 
-Resultado: **0.953207075596**
+Resultado: **0.956374168396**
 
 
 ### Visualizacion
