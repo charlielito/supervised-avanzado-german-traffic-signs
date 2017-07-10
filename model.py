@@ -40,6 +40,8 @@ class Model(SoftmaxClassifier):
         net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, name="elu_2b", padding="same")
         # Parameters: 5*5*16*32 =
 
+        net = tf.layers.dropout(net, rate=0.5, training=inputs.training)
+
         net = tf.layers.conv2d(net, 32, [3, 3], activation=tf.nn.elu, name="elu_3", padding="same")
         net = tf.layers.conv2d(net, 64, [3, 3], activation=tf.nn.elu, name="elu_3_a", padding="same")
         net = tf.layers.max_pooling2d(net, pool_size=2, strides=2, name="max_pool_2", padding="same")
