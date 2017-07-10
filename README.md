@@ -45,10 +45,8 @@ Se utilizó una Red Neuronal Convolucional con la siguiente arquitectura:
 
 * Inputs: 3 filtros (RGB)
 * Capa Convolucional: 16 filtros, kernel 5x5, padding 'same', funcion de activacion ELU
-* Capa Convolucional: 32 filtros, kernel 5x5, padding 'same', funcion de activacion ELU
-* Max Pool: kernel 2x2, stride 2
-* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
-* Max Pool: kernel 2x2, stride 2
+* Capa Convolucional: 32 filtros, kernel 5x5, padding 'same', stride 2, funcion de activacion ELU
+* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', stride 2, funcion de activacion ELU
 * Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
 * Flatten: se aplana a vector
 * Capa Densa: 256 neuronas, activacion ELU, dropout = 0.15
@@ -56,14 +54,14 @@ Se utilizó una Red Neuronal Convolucional con la siguiente arquitectura:
 * Capa Densa Output: 43 neuronal, activacion softmax
 
 ###### Parametros
-Este modelo utiliza `1,156,747` parametros.
+Este modelo utiliza `1,156,144` parametros.
 
 ##### Entrenamiento
 Se utilizó un Stocastic Gradient Descent con los siguentes parámetros
 
 * Optimizador: ADAM
 * Learning Rate: 0.001
-* Batch Size: 128
+* Batch Size: 64
 
 ##### Notas
 No se intentó optimizar el modelo de ninguna manera, en especial:
@@ -78,7 +76,7 @@ python train.py
 Este script realiza lo siguiente
 
 * Utiliza `seed = 32` para controlar la aleatoreidad y que los resultados sean reproducibles
-* Entrena el modelo por `8000` iteraciones
+* Entrena el modelo por `6000` iteraciones
 * Graba el modelo en los archivos `basic-conv-net.tf.*`
 
 
@@ -88,7 +86,7 @@ Ver el score del `test-set` ejecuta
 python test.py
 ```
 
-Resultado: **0.956374168396**
+Resultado: **0.936342537403**
 
 
 ### Visualizacion
