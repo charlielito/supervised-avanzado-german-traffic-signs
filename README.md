@@ -19,7 +19,7 @@ donde `n_aciertos` es el numero de imagenes clasificadas de forma correcta y `n_
 ### Requerimientos
 Clona este repositorio y ejecuta el commando
 ```bash
-git checkout red_pequena_prof
+git checkout all_cnn2
 ```
 Despues puedes instalar los requirementos fácilmente utilizando el commando
 
@@ -54,14 +54,14 @@ Se utilizó una Red Neuronal Convolucional con la siguiente arquitectura:
 * Capa Densa Output: 43 neuronal, activacion softmax
 
 ###### Parametros
-Este modelo utiliza `1,156,144` parametros.
+Este modelo utiliza `314,955` parametros.
 
 ##### Entrenamiento
 Se utilizó un Stocastic Gradient Descent con los siguentes parámetros
 
 * Optimizador: ADAM
 * Learning Rate: 0.001
-* Batch Size: 64
+* Batch Size: 128
 
 ##### Notas
 No se intentó optimizar el modelo de ninguna manera, en especial:
@@ -76,7 +76,7 @@ python train.py
 Este script realiza lo siguiente
 
 * Utiliza `seed = 32` para controlar la aleatoreidad y que los resultados sean reproducibles
-* Entrena el modelo por `6000` iteraciones
+* Entrena el modelo por `10000` iteraciones
 * Graba el modelo en los archivos `basic-conv-net.tf.*`
 
 
@@ -86,7 +86,7 @@ Ver el score del `test-set` ejecuta
 python test.py
 ```
 
-Resultado: **0.936342537403**
+Resultado: **0.971576094627**
 
 
 ### Visualizacion
