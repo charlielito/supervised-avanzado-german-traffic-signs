@@ -82,7 +82,7 @@ python train.py
 Este script realiza lo siguiente
 
 * Utiliza `seed = 32` para controlar la aleatoreidad y que los resultados sean reproducibles
-* Entrena el modelo por `6000` iteraciones
+* Entrena el modelo por `8000` iteraciones
 * Graba el modelo en los archivos `basic-conv-net.tf.*`
 
 
