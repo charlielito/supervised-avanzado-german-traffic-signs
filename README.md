@@ -44,14 +44,24 @@ dataget get --dont-process german-traffic-signs
 Se utilizó una Red Neuronal Convolucional con la siguiente arquitectura:
 
 * Inputs: 3 filtros (RGB)
-* Capa Convolucional: 16 filtros, kernel 5x5, padding 'same', funcion de activacion ELU
-* Capa Convolucional: 32 filtros, kernel 5x5, padding 'same', stride 2, funcion de activacion ELU
-* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', stride 2, funcion de activacion ELU
-* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', funcion de activacion ELU
-* Flatten: se aplana a vector
-* Capa Densa: 256 neuronas, activacion ELU, dropout = 0.15
-* Capa Densa: 128 neuronas, activacion ELU
-* Capa Densa Output: 43 neuronal, activacion softmax
+* Capa Convolucional: 16 filtros, kernel 5x5, padding 'same', función de activación ELU
+* Capa Convolucional: 32 filtros, kernel 5x5, padding 'same', función de activación ELU
+* Max Pooling: kernel 2x2, stride 2, padding 'same'
+* Capa Convolucional: 32 filtros, kernel 3x3, padding 'same', función de activación ELU
+* * Dropout: rate = 0.5
+* Capa Convolucional: 32 filtros, kernel 3x3, padding 'same', función de activación ELU
+* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', función de activación ELU
+* Max Pooling: kernel 2x2, stride 2, padding 'same'
+* Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', función de activación ELU
+* Dropout: rate = 0.5
+* Capa Convolucional: 128 filtros, kernel 3x3, padding 'same', función de activación ELU
+* Capa Convolucional: 128 filtros, kernel 3x3, padding 'same', función de activación ELU
+* Dropout: rate = 0.25
+* Capa Convolucional: 43 filtros, kernel 1x1, padding 'same', función de activación ELU
+* Average Pooling: kernel 8x8, stride 1
+* Flatten: se convierte a vector de 43 dimensiones
+* Softmax: función de activación softmax directamente sobre flatten
+
 
 ###### Parametros
 Este modelo utiliza `314,955` parametros.
