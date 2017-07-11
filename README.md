@@ -48,7 +48,6 @@ Se utilizó una Red Neuronal Convolucional con la siguiente arquitectura:
 * Capa Convolucional: 32 filtros, kernel 5x5, padding 'same', función de activación ELU
 * Max Pooling: kernel 2x2, stride 2, padding 'same'
 * Capa Convolucional: 32 filtros, kernel 3x3, padding 'same', función de activación ELU
-* * Dropout: rate = 0.5
 * Capa Convolucional: 32 filtros, kernel 3x3, padding 'same', función de activación ELU
 * Capa Convolucional: 64 filtros, kernel 3x3, padding 'same', función de activación ELU
 * Max Pooling: kernel 2x2, stride 2, padding 'same'

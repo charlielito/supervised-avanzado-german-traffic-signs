@@ -31,8 +31,6 @@ class Model(SoftmaxClassifier):
         # cast
         net = tf.cast(self.inputs.features, tf.float32, "cast")
         # input is 32x32x3
-        size = reduce(lambda x, y: x*y, net.get_shape()[1:4])
-
 
         # conv layers
         net = tf.layers.conv2d(net, 16, [5, 5], activation=tf.nn.elu, name="elu_1", padding="same")
