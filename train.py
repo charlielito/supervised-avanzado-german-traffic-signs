@@ -18,7 +18,7 @@ dataset = data("german-traffic-signs").get()
 
 # obtener todas las imagenes (lento)
 dataset.training_set.dataframe()
-data_generator = dataset.training_set.random_batch_arrays_generator(64)
+data_generator = dataset.training_set.random_batch_arrays_generator(128)
 data_generator = cz.map(Dict(features = P[0], labels = P[1]), data_generator)
 
 graph = tf.Graph()
