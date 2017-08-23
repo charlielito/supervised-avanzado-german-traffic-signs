@@ -5,6 +5,7 @@ pandas
 jupyter
 matplotlib
 dataget
+scikit-learn
 tfinterface>=0.0.10
 floyd-cli
 shyaml
